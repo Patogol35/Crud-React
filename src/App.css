@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f5f7fa;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    #111827 0%,
+    #1f2937 100%
+  );
+
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    text-align: center;
+  }
+}
