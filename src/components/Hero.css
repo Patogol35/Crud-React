@@ -1,0 +1,121 @@
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+  margin-bottom: 40px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  background: linear-gradient(
+    135deg,
+    #111827 0%,
+    #1f2937 100%
+  );
+
+  color: white;
+}
+
+
+/* ==========================================
+   CONTENEDOR
+========================================== */
+
+.hero-container {
+  text-align: center;
+}
+
+
+/* ==========================================
+   OVERLINE
+========================================== */
+
+.hero-overline {
+  display: block;
+
+  color: #90caf9;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+
+/* ==========================================
+   TITULO
+========================================== */
+
+.hero-title {
+  margin-top: 8px;
+
+  color: #ffffff;
+
+  font-size: 3.7rem;
+  font-weight: 800;
+}
+
+
+/* ==========================================
+   SUBTITULO
+========================================== */
+
+.hero-subtitle {
+  margin-top: 8px;
+
+  color: #bbdefb;
+
+  font-weight: 500;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* ==========================================
+   DESCRIPCION
+========================================== */
+
+.hero-description {
+  max-width: 600px;
+
+  margin: 16px auto 0;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  text-align: center;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-overline {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+
+  .hero-description {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
