@@ -3,22 +3,21 @@ import { useEffect, useState } from "react";
 import {
   Alert,
   Box,
-  Button,
   Container,
   Grid,
   Snackbar,
   CircularProgress,
   Paper,
-  Typography,
 } from "@mui/material";
 
 import {
   Add,
-  Refresh,
 } from "@mui/icons-material";
 
 import ProductoForm from "./components/ProductoForm";
 import ProductoCard from "./components/ProductoCard";
+import Hero from "./components/Hero";
+import ProductosHeader from "./components/ProductosHeader";
 
 import {
   obtenerProductos,
@@ -263,82 +262,7 @@ function App() {
           HEADER
       ====================================== */}
 
-      <Box
-        className="hero"
-        sx={{
-          py: { xs: 6, md: 8 },
-          mb: 5,
-        }}
-      >
-
-        <Container
-          maxWidth="lg"
-          sx={{
-            textAlign: "center",
-          }}
-        >
-
-          <Typography
-            variant="overline"
-            sx={{
-              display: "block",
-              letterSpacing: 4,
-              color: "#90caf9",
-              fontWeight: 700,
-              fontSize: "0.85rem",
-            }}
-          >
-            SISTEMA DE GESTIÓN
-          </Typography>
-
-
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{
-              mt: 1,
-              fontWeight: 800,
-              color: "#ffffff",
-              fontSize: {
-                xs: "2.4rem",
-                sm: "3rem",
-                md: "3.7rem",
-              },
-            }}
-          >
-            Productos
-          </Typography>
-
-
-          <Typography
-            variant="h6"
-            sx={{
-              mt: 1,
-              color: "#bbdefb",
-              fontWeight: 500,
-              letterSpacing: 0.8,
-            }}
-          >
-            React + Python + Flask
-          </Typography>
-
-
-          <Typography
-            sx={{
-              mt: 2,
-              mx: "auto",
-              maxWidth: 600,
-              color: "rgba(255,255,255,0.75)",
-              textAlign: "center",
-            }}
-          >
-            Administra tus productos de forma sencilla,
-            rápida y organizada.
-          </Typography>
-
-        </Container>
-
-      </Box>
+      <Hero />
 
 
       {/* =====================================
@@ -370,61 +294,11 @@ function App() {
             HEADER PRODUCTOS
         ====================================== */}
 
-        <Paper
-          elevation={0}
-          sx={{
-            p: 2.5,
-            mb: 3,
-            borderRadius: 3,
-            border: "1px solid",
-            borderColor: "divider",
-          }}
-        >
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 2,
-              flexWrap: "wrap",
-            }}
-          >
-
-            <Box>
-
-              <Typography
-                variant="h5"
-                fontWeight={700}
-              >
-                Productos registrados
-              </Typography>
-
-              <Typography
-                variant="body2"
-                color="text.secondary"
-              >
-                {productos.length}{" "}
-                {productos.length === 1
-                  ? "producto"
-                  : "productos"}
-              </Typography>
-
-            </Box>
-
-
-            <Button
-              variant="outlined"
-              startIcon={<Refresh />}
-              onClick={cargarProductos}
-              disabled={cargando}
-            >
-              Actualizar
-            </Button>
-
-          </Box>
-
-        </Paper>
+        <ProductosHeader
+          cantidad={productos.length}
+          cargando={cargando}
+          onRefresh={cargarProductos}
+        />
 
 
         {/* =====================================
@@ -464,21 +338,27 @@ function App() {
               }}
             />
 
+            <Box>
 
-            <Typography
-              variant="h6"
-              fontWeight={600}
-            >
-              No hay productos
-            </Typography>
+              <strong
+                style={{
+                  fontSize: "1.25rem",
+                }}
+              >
+                No hay productos
+              </strong>
 
+            </Box>
 
-            <Typography
-              color="text.secondary"
+            <Box
+              sx={{
+                color: "text.secondary",
+                mt: 1,
+              }}
             >
               Crea tu primer producto usando
               el formulario.
-            </Typography>
+            </Box>
 
           </Paper>
 
