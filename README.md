@@ -60,7 +60,7 @@ Backend:
 
 ```bash
 
-git clone https://github.com/Patogol35/crud-python/
+git clone https://github.com/Patogol35/Crud-Python/
 
 ```
 
@@ -68,7 +68,7 @@ Frontend
 
 ```bash
 
-git clone https://github.com/Patogol35/crud-react/
+git clone https://github.com/Patogol35/Crud-React/
 
  ```
 
@@ -78,7 +78,7 @@ Entrar a la carpeta del backend:
 
 ```bash
 
-cd crud-python
+cd Crud-Python
 
 ```
 
@@ -125,7 +125,7 @@ En otra terminal, entrar al frontend:
 
 ```bash
 
-cd crud-front
+cd Crud-Front
 
 ```
 
