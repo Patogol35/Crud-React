@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import {
   Alert,
   Box,
+  CircularProgress,
   Container,
   Grid,
-  Snackbar,
-  CircularProgress,
   Paper,
+  Snackbar,
+  Typography,
 } from "@mui/material";
 
 import {
@@ -271,9 +272,7 @@ function App() {
 
       <Container
         maxWidth="lg"
-        sx={{
-          pb: 8,
-        }}
+        className="app-content"
       >
 
         {/* =====================================
@@ -307,13 +306,7 @@ function App() {
 
         {cargando && productos.length === 0 ? (
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              py: 8,
-            }}
-          >
+          <Box className="products-loading">
             <CircularProgress />
           </Box>
 
@@ -321,50 +314,34 @@ function App() {
 
           <Paper
             elevation={0}
-            sx={{
-              py: 8,
-              textAlign: "center",
-              borderRadius: 4,
-              border: "1px solid",
-              borderColor: "divider",
-            }}
+            className="empty-products"
           >
 
-            <Add
-              sx={{
-                fontSize: 50,
-                color: "text.secondary",
-                mb: 1,
-              }}
-            />
+            <Add className="empty-products-icon" />
 
-            <Box>
+            <Typography
+              variant="h6"
+              className="empty-products-title"
+            >
+              No hay productos
+            </Typography>
 
-              <strong
-                style={{
-                  fontSize: "1.25rem",
-                }}
-              >
-                No hay productos
-              </strong>
-
-            </Box>
-
-            <Box
-              sx={{
-                color: "text.secondary",
-                mt: 1,
-              }}
+            <Typography
+              color="text.secondary"
+              className="empty-products-text"
             >
               Crea tu primer producto usando
               el formulario.
-            </Box>
+            </Typography>
 
           </Paper>
 
         ) : (
 
-          <Grid container spacing={3}>
+          <Grid
+            container
+            spacing={3}
+          >
 
             {productos.map((producto) => (
 
@@ -412,9 +389,7 @@ function App() {
           severity={tipoMensaje}
           variant="filled"
           onClose={() => setSnackbar(false)}
-          sx={{
-            width: "100%",
-          }}
+          className="app-snackbar"
         >
           {mensaje}
         </Alert>
