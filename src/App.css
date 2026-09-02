@@ -1,3 +1,7 @@
+/* ==========================================
+   RESET / GLOBAL
+========================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -18,22 +22,86 @@ textarea {
   font-family: inherit;
 }
 
+
+/* ==========================================
+   APP
+========================================== */
+
 .app {
   min-height: 100vh;
 }
 
-.hero {
-  background: linear-gradient(
-    135deg,
-    #111827 0%,
-    #1f2937 100%
-  );
 
-  color: white;
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.app-content {
+  padding-bottom: 64px;
 }
 
+
+/* ==========================================
+   PRODUCTOS - LOADING
+========================================== */
+
+.products-loading {
+  display: flex;
+  justify-content: center;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+
+/* ==========================================
+   SIN PRODUCTOS
+========================================== */
+
+.empty-products {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  text-align: center;
+  border-radius: 16px;
+  border: 1px solid;
+  border-color: #e0e0e0;
+}
+
+.empty-products-icon {
+  display: block;
+  margin: 0 auto 8px;
+  font-size: 50px;
+  color: #757575;
+}
+
+.empty-products-title {
+  font-weight: 600;
+}
+
+.empty-products-text {
+  margin-top: 8px;
+}
+
+
+/* ==========================================
+   SNACKBAR
+========================================== */
+
+.app-snackbar {
+  width: 100%;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
 @media (max-width: 600px) {
-  .hero {
-    text-align: center;
+  .app-content {
+    padding-bottom: 48px;
+  }
+
+  .empty-products {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
