@@ -1,38 +1,26 @@
-import {
+  import {
   Box,
   Container,
   Typography,
 } from "@mui/material";
+
+import "./Hero.css";
 
 
 function Hero() {
 
   return (
 
-    <Box
-      className="hero"
-      sx={{
-        py: { xs: 6, md: 8 },
-        mb: 5,
-      }}
-    >
+    <Box className="hero">
 
       <Container
         maxWidth="lg"
-        sx={{
-          textAlign: "center",
-        }}
+        className="hero-container"
       >
 
         <Typography
           variant="overline"
-          sx={{
-            display: "block",
-            letterSpacing: 4,
-            color: "#90caf9",
-            fontWeight: 700,
-            fontSize: "0.85rem",
-          }}
+          className="hero-overline"
         >
           SISTEMA DE GESTIÓN
         </Typography>
@@ -41,16 +29,7 @@ function Hero() {
         <Typography
           variant="h2"
           component="h1"
-          sx={{
-            mt: 1,
-            fontWeight: 800,
-            color: "#ffffff",
-            fontSize: {
-              xs: "2.4rem",
-              sm: "3rem",
-              md: "3.7rem",
-            },
-          }}
+          className="hero-title"
         >
           Productos
         </Typography>
@@ -58,26 +37,13 @@ function Hero() {
 
         <Typography
           variant="h6"
-          sx={{
-            mt: 1,
-            color: "#bbdefb",
-            fontWeight: 500,
-            letterSpacing: 0.8,
-          }}
+          className="hero-subtitle"
         >
           React + Python + Flask
         </Typography>
 
 
-        <Typography
-          sx={{
-            mt: 2,
-            mx: "auto",
-            maxWidth: 600,
-            color: "rgba(255,255,255,0.75)",
-            textAlign: "center",
-          }}
-        >
+        <Typography className="hero-description">
           Administra tus productos de forma sencilla,
           rápida y organizada.
         </Typography>
