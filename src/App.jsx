@@ -11,9 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import {
-  Add,
-} from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
 
 import ProductoForm from "./components/ProductoForm";
 import ProductoCard from "./components/ProductoCard";
@@ -29,7 +27,6 @@ import {
 
 import "./App.css";
 
-
 const formularioInicial = {
   nombre: "",
   descripcion: "",
@@ -37,154 +34,76 @@ const formularioInicial = {
   categoria: "",
 };
 
-
 function App() {
-
   const [productos, setProductos] = useState([]);
-
-  const [formulario, setFormulario] = useState(
-    formularioInicial
-  );
-
+  const [formulario, setFormulario] = useState(formularioInicial);
   const [editando, setEditando] = useState(null);
-
   const [cargando, setCargando] = useState(false);
-
   const [mensaje, setMensaje] = useState("");
-
   const [tipoMensaje, setTipoMensaje] = useState("success");
-
   const [snackbar, setSnackbar] = useState(false);
 
-
-  // ==========================================
-  // MOSTRAR MENSAJE
-  // ==========================================
-
-  const mostrarMensaje = (
-    texto,
-    tipo = "success"
-  ) => {
-
+  const mostrarMensaje = (texto, tipo = "success") => {
     setMensaje(texto);
     setTipoMensaje(tipo);
     setSnackbar(true);
-
   };
-
-
-  // ==========================================
-  // CARGAR PRODUCTOS
-  // ==========================================
 
   const cargarProductos = async () => {
-
     try {
-
       setCargando(true);
-
       const datos = await obtenerProductos();
-
       setProductos(datos);
-
     } catch (error) {
-
       console.error(error);
-
-      mostrarMensaje(
-        "No se pudo conectar con Flask",
-        "error"
-      );
-
+      mostrarMensaje("No se pudo conectar con Flask", "error");
     } finally {
-
       setCargando(false);
-
     }
   };
-
 
   useEffect(() => {
     cargarProductos();
   }, []);
 
-
-  // ==========================================
-  // CAMBIAR FORMULARIO
-  // ==========================================
-
   const manejarCambio = (e) => {
-
-    setFormulario({
-      ...formulario,
+    setFormulario((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
-
+    }));
   };
 
-
-  // ==========================================
-  // CREAR / ACTUALIZAR
-  // ==========================================
+  const limpiarFormulario = () => {
+    setFormulario(formularioInicial);
+    setEditando(null);
+  };
 
   const manejarSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       setCargando(true);
 
       if (editando) {
-
-        await actualizarProducto(
-          editando,
-          formulario
-        );
-
-        mostrarMensaje(
-          "Producto actualizado correctamente"
-        );
-
+        await actualizarProducto(editando, formulario);
+        mostrarMensaje("Producto actualizado correctamente");
       } else {
-
         await crearProducto(formulario);
-
-        mostrarMensaje(
-          "Producto creado correctamente"
-        );
-
+        mostrarMensaje("Producto creado correctamente");
       }
 
       limpiarFormulario();
-
       await cargarProductos();
-
     } catch (error) {
-
       console.error(error);
-
-      mostrarMensaje(
-        error.message || "Ocurrió un error",
-        "error"
-      );
-
+      mostrarMensaje(error.message || "Ocurrió un error", "error");
     } finally {
-
       setCargando(false);
-
     }
   };
 
-
-  // ==========================================
-  // EDITAR
-  // ==========================================
-
   const manejarEditar = (producto) => {
-
     setEditando(producto.id);
-
     setFormulario({
       nombre: producto.nombre || "",
       descripcion: producto.descripcion || "",
@@ -198,87 +117,32 @@ function App() {
     });
   };
 
-
-  // ==========================================
-  // ELIMINAR
-  // ==========================================
-
   const manejarEliminar = async (id) => {
-
-    const confirmar = window.confirm(
-      "¿Seguro que quieres eliminar este producto?"
-    );
-
-    if (!confirmar) return;
+    if (!window.confirm("¿Seguro que quieres eliminar este producto?")) {
+      return;
+    }
 
     try {
-
       setCargando(true);
-
       await eliminarProducto(id);
-
-      mostrarMensaje(
-        "Producto eliminado correctamente"
-      );
-
+      mostrarMensaje("Producto eliminado correctamente");
       await cargarProductos();
-
     } catch (error) {
-
       console.error(error);
-
       mostrarMensaje(
         error.message || "No se pudo eliminar el producto",
         "error"
       );
-
     } finally {
-
       setCargando(false);
-
     }
   };
 
-
-  // ==========================================
-  // LIMPIAR FORMULARIO
-  // ==========================================
-
-  const limpiarFormulario = () => {
-
-    setFormulario({
-      ...formularioInicial,
-    });
-
-    setEditando(null);
-
-  };
-
-
   return (
-
     <Box className="app">
-
-      {/* =====================================
-          HEADER
-      ====================================== */}
-
       <Hero />
 
-
-      {/* =====================================
-          CONTENIDO
-      ====================================== */}
-
-      <Container
-        maxWidth="lg"
-        className="app-content"
-      >
-
-        {/* =====================================
-            FORMULARIO
-        ====================================== */}
-
+      <Container maxWidth="lg" className="app-content">
         <ProductoForm
           formulario={formulario}
           editando={editando}
@@ -288,41 +152,21 @@ function App() {
           onCancel={limpiarFormulario}
         />
 
-
-        {/* =====================================
-            HEADER PRODUCTOS
-        ====================================== */}
-
         <ProductosHeader
           cantidad={productos.length}
           cargando={cargando}
           onRefresh={cargarProductos}
         />
 
-
-        {/* =====================================
-            PRODUCTOS
-        ====================================== */}
-
         {cargando && productos.length === 0 ? (
-
           <Box className="products-loading">
             <CircularProgress />
           </Box>
-
         ) : productos.length === 0 ? (
-
-          <Paper
-            elevation={0}
-            className="empty-products"
-          >
-
+          <Paper elevation={0} className="empty-products">
             <Add className="empty-products-icon" />
 
-            <Typography
-              variant="h6"
-              className="empty-products-title"
-            >
+            <Typography variant="h6" className="empty-products-title">
               No hay productos
             </Typography>
 
@@ -330,50 +174,26 @@ function App() {
               color="text.secondary"
               className="empty-products-text"
             >
-              Crea tu primer producto usando
-              el formulario.
+              Crea tu primer producto usando el formulario.
             </Typography>
-
           </Paper>
-
         ) : (
-
-          <Grid
-            container
-            spacing={3}
-          >
-
+          <Grid container spacing={3}>
             {productos.map((producto) => (
-
               <Grid
                 key={producto.id}
-                size={{
-                  xs: 12,
-                  sm: 6,
-                  md: 4,
-                }}
+                size={{ xs: 12, sm: 6, md: 4 }}
               >
-
                 <ProductoCard
                   producto={producto}
                   onEditar={manejarEditar}
                   onEliminar={manejarEliminar}
                 />
-
               </Grid>
-
             ))}
-
           </Grid>
-
         )}
-
       </Container>
-
-
-      {/* =====================================
-          MENSAJES
-      ====================================== */}
 
       <Snackbar
         open={snackbar}
@@ -384,7 +204,6 @@ function App() {
           horizontal: "right",
         }}
       >
-
         <Alert
           severity={tipoMensaje}
           variant="filled"
@@ -393,9 +212,7 @@ function App() {
         >
           {mensaje}
         </Alert>
-
       </Snackbar>
-
     </Box>
   );
 }
