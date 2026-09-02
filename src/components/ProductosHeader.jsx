@@ -9,6 +9,8 @@ import {
   Refresh,
 } from "@mui/icons-material";
 
+import "./ProductosHeader.css";
+
 
 function ProductosHeader({
   cantidad,
@@ -20,30 +22,16 @@ function ProductosHeader({
 
     <Paper
       elevation={0}
-      sx={{
-        p: 2.5,
-        mb: 3,
-        borderRadius: 3,
-        border: "1px solid",
-        borderColor: "divider",
-      }}
+      className="productos-header"
     >
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 2,
-          flexWrap: "wrap",
-        }}
-      >
+      <Box className="productos-header-content">
 
         <Box>
 
           <Typography
             variant="h5"
-            fontWeight={700}
+            className="productos-header-title"
           >
             Productos registrados
           </Typography>
