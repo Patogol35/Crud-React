@@ -1,0 +1,53 @@
+/* ==========================================
+   HEADER PRODUCTOS
+========================================== */
+
+.productos-header {
+  padding: 20px;
+
+  margin-bottom: 24px;
+
+  border-radius: 12px;
+
+  border: 1px solid #e0e0e0;
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.productos-header-content {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================
+   TITULO
+========================================== */
+
+.productos-header-title {
+  font-weight: 700;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+  .productos-header {
+    padding: 16px;
+  }
+
+  .productos-header-content {
+    align-items: flex-start;
+  }
+}
