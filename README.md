@@ -8,7 +8,7 @@ El sistema permite realizar operaciones CRUD completas sobre los productos: crea
 
 🚀 Tecnologías utilizadas:
 
-- Frontend
+Frontend
   
 - React
   
